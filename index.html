@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Program Filters</title>		
+
+	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+	<link href="styles.css" rel="stylesheet">
+
+	<link href="isotope.css" rel="stylesheet">
+
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.4/handlebars.min.js"></script>
+
+	<script src="handlebars-jquery.js"></script>
+	<Script src="handlebarHelpers.js"></script>
+
+
+	<script src="isotope-1.5.25.js"></script>
+	
+	<script src="http://jiren.github.io/filter.js/filter.js"></script>
+
+	<script id="programTemplate" type="text/x-handlebars-template">
+		<div class="programs">
+			<div class="well well-small program">
+
+				<span class="pull-right">
+					{{#each Classlevels}}
+						{{#classlevelH}}{{/classlevelH}}
+					{{/each}}
+				</span>
+
+
+				<a title="{{Name}}" href="#/I/dont/go/anywhere/yet">			
+					<h6>{{Name}}</h6>			
+				</a>
+
+
+				<div>					
+					{{#if Description}}
+						<strong>Description: </strong>
+						{{Description}}
+					{{/if}}
+				</div>
+
+	
+				<span><strong>GPA:</strong></span>							
+				{{#gpaH}}
+					{{GPA}}
+				{{/gpaH}}
+
+				<div>
+					<ul>
+					{{#each Options}}
+						<li>{{Package}}</li>
+					{{/each}}
+					</ul>
+				</div>
+				<div>
+					{{#each Terms}}
+						{{#termsH}}{{/termsH}}
+					{{/each}}
+				</div>
+
+				<div>
+					{{#each PartnerInstitutions}}
+						<p>{{Name}}</p>
+					{{/each}}
+				</div>
+			
+				
+			</div>
+		</div>
+	</script>
+
+	<!-- this needs to be last, yo! -->
+	<script src="app.js"></script>
+</head>
+
+
+<body>
+
+	<div class="span3">		
+
+		<div>			
+			<strong>Terms</strong>
+			<span class="pull-right" id="termsToggle">
+					<a href="#">all</a> / <a href="#">none</a>
+			</span>	
+			<ul id="terms" class="unstyled well well-small">			
+				<li>
+					<label class="checkbox">
+						<input type="checkbox" id="terms-1" value="Fall" checked>
+						<small>Fall</small>
+					</label>
+				</li>
+				<li>
+					<label class="checkbox">
+						<input type="checkbox" id="terms-2" value="Winter" checked>
+						<small>Winter</small>
+					</label>
+				</li>
+				<li>
+					<label class="checkbox">
+						<input type="checkbox" id="terms-3" value="Spring" checked>
+						<small>Spring</small>
+					</label>
+				</li>
+				<li>
+					<label class="checkbox">
+						<input type="checkbox" id="terms-4" value="Summer" checked>
+						<small>Summer</small>
+					</label>
+				</li>
+			</ul>	
+		</div>
+
+		<div>
+			<div>			
+				<strong>Classlevels</strong>
+				<span class="pull-right" id="classlevelsToggle">
+					<a href="#">all</a> / <a href="#">none</a>
+				</span>
+			</div>
+			<ul id="classlevels" class="unstyled well well-small">			
+			</ul>	
+		</div>
+
+
+		<div>
+			<div>
+				<strong>Countries</strong>
+				<span class="pull-right" id="countriesToggle">
+					<a href="#">all</a> / <a href="#">none</a>
+				</span>
+			</div>
+			<ul id="countries" class="unstyled well well-small">			
+			</ul>
+		</div>
+		
+
+
+	</div>
+
+
+
+
+	<div class="span9">
+		<div id="results_count">Displaying All Results</div>
+
+		<div id="output_list" class="span9 container"></div>
+	</div>
+	
+</body>
+</html>
